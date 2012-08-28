@@ -1,0 +1,5 @@
+This file documents changes in the firmware-only CDC driver for atmel's AVR
+microcontrollers. New entries are always appended to the end of the file.
+Scroll down to the bottom to see the most recent changes.
+
+* Release 2010-02-06
