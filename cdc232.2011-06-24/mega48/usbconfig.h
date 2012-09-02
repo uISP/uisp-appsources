@@ -136,7 +136,7 @@ section at the end of this file).
  * (e.g. HID), but never want to send any data. This option saves a couple
  * of bytes in flash memory and the transmit buffers in RAM.
  */
-#define USB_CFG_INTR_POLL_INTERVAL      255
+#define USB_CFG_INTR_POLL_INTERVAL      20
 /* If you compile a version with endpoint 1 (interrupt-in), this is the poll
  * interval. The value is in milliseconds and must not be less than 10 ms for
  * low speed devices.
@@ -390,9 +390,9 @@ section at the end of this file).
 /* ----------------------- Optional MCU Description ------------------------ */
 
 /*	ATmega***p/pa needs SIG_ definitions	*/
-#ifndef SIG_INTERRUPT0
-#define SIG_INTERRUPT0			_VECTOR(1)
-#endif
+//#ifndef SIG_INTERRUPT0
+//#define SIG_INTERRUPT0			_VECTOR(1)
+//#endif
 
 /* The following configurations have working defaults in usbdrv.h. You
  * usually don't need to set them explicitly. Only if you want to run

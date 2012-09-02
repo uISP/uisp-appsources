@@ -165,19 +165,12 @@ static unsigned short clock_delay2 = DEFAULT_DELAY/2;
 static unsigned short expected;
 static unsigned char saved_cmd;
 
-#if! defined (__AVR_ATtiny45__)
+
 #define I2C_PORT   PORTC
 #define I2C_PIN    PINC
 #define I2C_DDR    DDRC
 #define I2C_SDA    _BV(4)
 #define I2C_SCL    _BV(5)
-#else
-#define I2C_PORT   PORTB
-#define I2C_PIN    PINB
-#define I2C_DDR    DDRB
-#define I2C_SDA    _BV(1)
-#define I2C_SCL    _BV(5)
-#endif
 
 static void i2c_io_set_sda(uchar hi) {
   if(hi) {
@@ -553,16 +546,16 @@ int	main(void) {
 #endif
 
   /* clear usb ports */
-  USB_CFG_IOPORT   &= (uchar)~((1<<USB_CFG_DMINUS_BIT)|(1<<USB_CFG_DPLUS_BIT));
+//   USB_CFG_IOPORT   &= (uchar)~((1<<USB_CFG_DMINUS_BIT)|(1<<USB_CFG_DPLUS_BIT));
 
   /* make usb data lines outputs */
-  USBDDR    |= ((1<<USB_CFG_DMINUS_BIT)|(1<<USB_CFG_DPLUS_BIT));
+//   USBDDR    |= ((1<<USB_CFG_DMINUS_BIT)|(1<<USB_CFG_DPLUS_BIT));
 
   /* USB Reset by device only required on Watchdog Reset */
-  _delay_loop_2(40000);   // 10ms
+//   _delay_loop_2(40000);   // 10ms
 
   /* make usb data lines inputs */
-  USBDDR &= ~((1<<USB_CFG_DMINUS_BIT)|(1<<USB_CFG_DPLUS_BIT));
+//   USBDDR &= ~((1<<USB_CFG_DMINUS_BIT)|(1<<USB_CFG_DPLUS_BIT));
 
   usbInit();
 

@@ -46,8 +46,6 @@ uchar usbFunctionSetup(uchar data[8]) {
 		/* set SCK speed */
 		if ((PINC & (1 << 0)) == 0) {
 			ispSetSCKOption(USBASP_ISP_SCK_8);
-		}else if ((PINC & (1 << 1)) == 0) {
-			ispSetSCKOption(USBASP_ISP_SCK_1500);
 		} else {
 			ispSetSCKOption(prog_sck);
 		}
@@ -304,9 +302,9 @@ uchar usbFunctionWrite(uchar *data, uchar len) {
 
 int main(void) {
 	PORTD|=1<<1;
-	DDRB = ~0;
-	DDRC = 1<<2;
-	PORTC = 1|1<<1|1<<2;
+	DDRB = 0xfc;
+	DDRC  = 1<<2;
+	PORTC = 0x7;
 
 	/* init timer */
 	clockInit();
